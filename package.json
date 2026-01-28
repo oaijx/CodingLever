@@ -1,0 +1,27 @@
+{
+  "name": "VibeLever",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev content --host",
+    "docs:build": "vitepress build content",
+    "docs:preview": "vitepress preview content"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oaijx/vibelever.git"
+  },
+  "dependencies": {
+    "vitepress-plugin-image-viewer": "^1.1.6"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "mermaid": "^11.12.2",
+    "vitepress": "^2.0.0-alpha.15",
+    "vitepress-plugin-image-viewer": "^1.1.6",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vue": "^3.5.27"
+  }
+}
