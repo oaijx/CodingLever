@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/oaijx/vibelever/" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://github.com/oaijx/vibelever/blob/main/content/public/favicon.svg" alt="logo">
+    <img width="180" src="https://github.com/oaijx/vibelever/blob/main/content/public/image/logo.png" alt="logo">
   </a>
 </p>
 

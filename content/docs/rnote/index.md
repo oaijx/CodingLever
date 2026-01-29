@@ -8,11 +8,12 @@ keywords: 读书笔记, 深度思考, 架构思想, 持续交付, 职业成长
 
 本章索引：
 
+- [关于 PM](/docs/rnote/about_pm)
+- [沟通技巧](/docs/rnote/about_skill_communication)
+- [Google 技能评分卡](/docs/rnote/rnote_google_skill_level)
 - [深度思考](/docs/rnote/rnote_deep_mind)
 - [持续交付（极客时间）摘要](/docs/rnote/rnote_geekbang_devops)
 - [架构（极客时间）摘要](/docs/rnote/rnote_geekbang_architecture)
-- [Google 技能评分卡](/docs/rnote/rnote_google_skill_level)
-- [关于 PM](/docs/rnote/about_pm)
-- [沟通技巧](/docs/rnote/about_skill_communication)
+- [网络协议摘要](/docs/rnote/network/index)
 - [面试：技术面试摘要](/docs/rnote/rnote_geekbang_interview)
-- [网络协议](/docs/rnote/network/index)
+

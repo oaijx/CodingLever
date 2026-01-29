@@ -84,7 +84,6 @@ export default withMermaid(defineConfig({
                   ]
                 },
                 { text: 'C/C++', link: '/docs/lang/cxx_' },
-                { text: 'Go', link: '/docs/lang/golang_' },
                 { text: 'Swift', link: '/docs/lang/swift_' },
                 { text: 'Flutter', link: '/docs/lang/flutter_' },
                 { text: 'MVC/MVP/MVVM', link: '/docs/lang/architecture_mvc_mvp_mvvm' },
@@ -94,10 +93,9 @@ export default withMermaid(defineConfig({
             { text: '第3章：数据库', link: '/docs/database/', collapsed: true,
               items: [
                 { text: 'Redis 手册', link: '/docs/database/redis_manual' },
-                { text: '常见 Db 基础', link: '/docs/database/common_details' },
                 { text: 'MySQL 知识与实战', link: '/docs/database/mysql_info' },
-                { text: 'Db 抽象理解', link: '/docs/database/dbs_abstract' },
-                { text: 'High Performance Mysql 阅读', link: '/docs/database/high_performance_mysql' }
+                { text: '数据库抽象理解', link: '/docs/database/dbs_abstract' },
+                { text: '《高性能 MySQL》笔记', link: '/docs/database/high_performance_mysql' }
               ]
             },
             { text: '第4章：DevOps', link: '/docs/devops/', collapsed: true,
@@ -117,10 +115,8 @@ export default withMermaid(defineConfig({
               items: [
                 { text: 'Tcp 与 Udp 对比', link: '/docs/network/introduce_tcp_udp' },
                 { text: 'VPN 概览', link: '/docs/network/introduce_vpn' },
-                { text: 'Grpc Over Http2', link: '/docs/network/grpc/grpc_over_http2' },
-                { text: 'Grpc Interceptor With Go', link: '/docs/network/grpc/grpc_interceptor_with_go' },
-                { text: 'Grpc Connectivity Semantics And Api', link: '/docs/network/grpc/grpc_connectivity_semantics_and_api' },
-                { text: 'Grpc Source Notes', link: '/docs/network/grpc/grpc_source_notes' },
+                { text: 'gRPC Over Http2', link: '/docs/network/grpc/grpc_over_http2' },
+                { text: 'gRPC 连接语义与拦截器', link: '/docs/network/grpc/grpc_advanced_guide' },
                 { text: 'Http/2.0 与 Go 实践', link: '/docs/network/http2/http2_in_go' }
               ]
             },
@@ -144,12 +140,8 @@ export default withMermaid(defineConfig({
                 { text: 'AI 与数学', collapsed: true, items: [
                   { text: 'PCA 原理推导', link: '/docs/skills/ai/derivation_of_PCA' }
                 ]},
-                { text: '编程与工具', collapsed: true, items: [
-                  { text: 'Qt 基础', link: '/docs/skills/program_qt_base' },
-                  { text: '测试实践', link: '/docs/skills/program_tests' },
-                  { text: '少儿编程', link: '/docs/skills/children_program' },
-                  { text: 'Linux 内存排查', link: '/docs/skills/linux_mem_grows' }
-                ]}
+                { text: 'Qt 基础', link: '/docs/skills/program_qt_base' },
+                { text: 'Linux 内存排查', link: '/docs/skills/linux_mem_grows' }
               ]
             },
             { text: '第7章：分发与运营', link: '/docs/store/', collapsed: true,
@@ -160,12 +152,12 @@ export default withMermaid(defineConfig({
             },
             { text: '第8章：读书与笔记', link: '/docs/rnote/', collapsed: true,
               items: [
+                { text: 'Google 技能评分卡', link: '/docs/rnote/rnote_google_skill_level' },
+                { text: '关于 PM', link: '/docs/rnote/about_pm' },
                 { text: '深度思考', link: '/docs/rnote/rnote_deep_mind' },
                 { text: '持续交付（极客时间）摘要', link: '/docs/rnote/rnote_geekbang_devops' },
                 { text: '架构（极客时间）摘要', link: '/docs/rnote/rnote_geekbang_architecture' },
-                { text: 'Google 技能评分卡', link: '/docs/rnote/rnote_google_skill_level' },
-                { text: '关于 PM', link: '/docs/rnote/about_pm' },
-                { text: '网络协议', link: '/docs/rnote/network/', collapsed: true,
+                { text: '网络协议摘要', link: '/docs/rnote/network/', collapsed: true,
                   items: [
                     { text: '命令：ip', link: '/docs/rnote/network/cmds/ip' },
                     { text: '命令：ifconfig', link: '/docs/rnote/network/cmds/ifconfig' }

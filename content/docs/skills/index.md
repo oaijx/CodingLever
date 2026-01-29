@@ -31,7 +31,6 @@ AI 深入：
 
 编程与工具：
 - [Qt 基础](/docs/skills/program_qt_base)
-- [测试实践](/docs/skills/program_tests)
 - [少儿编程介绍](/docs/skills/children_program)
 - [字符编码与字体技术详解](/docs/skills/utils_font_and_coding)
 - [Linux 内存增长排查](/docs/skills/linux_mem_grows)
