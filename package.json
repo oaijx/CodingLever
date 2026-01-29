@@ -1,5 +1,5 @@
 {
-  "name": "VibeLever",
+  "name": "CodingLever",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -11,17 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oaijx/vibelever.git"
+    "url": "git+https://github.com/oaijx/CodingLever.git"
   },
   "dependencies": {
-    "vitepress-plugin-image-viewer": "^1.1.6"
+    "vitepress-plugin-image-viewer": "^1.1.6",
+    "vitepress-plugin-mermaid": "^2.0.16"
   },
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
-    "mermaid": "^11.12.2",
-    "vitepress": "^2.0.0-alpha.15",
-    "vitepress-plugin-image-viewer": "^1.1.6",
-    "vitepress-plugin-mermaid": "^2.0.17",
+    "vitepress": "^1.6.4",
     "vue": "^3.5.27"
   }
 }
