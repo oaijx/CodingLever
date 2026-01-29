@@ -141,7 +141,7 @@ windows 平台下的 PE签名 大致可以分为```embedded、catalog```两种�
 ### 验证签名
 使用命令行进行验证： ``` signtool verify /v /kp [service-new.exe] ```
 
-*注：参考 [生成 win10 下调试服务时的证书](windows_make_cert.md)*
+*注：参考 [调试服务时的自签名证书生成 (Win10)](#_11-2-调试服务时的自签名证书生成-win10)*
 
 ## 签名代码
 常见的验证签名的代码片段：

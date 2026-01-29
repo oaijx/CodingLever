@@ -34,7 +34,7 @@ keywords: Office 格式, OLE, MS-CFB, 宏病毒, 文件安全
 
 ### 1.1 漏洞
 漏洞利用是指软件自身缺陷被攻击者利用来执行高危动作，如利用 ole 的特点调用第三方组件并执行；栈溢出造成的任意代码执行漏洞(CVE-2017-11882) 等等，常见的漏洞有：
-- [CVE-2017-11882]()
+- [CVE-2017-11882]
 - [CVE-2018-0802](https://www.secpulse.com/archives/67027.html)
 - [CVE-2019-0801](https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2019-0801)
 - [CVE-2021-40444](https://bbs.pediy.com/thread-269266.htm)
@@ -149,7 +149,7 @@ OLE 文件的 Property Sets 通过以下两个 stream 存储:
 - ``` "\005SummaryInformation" ``` 
 - ``` "\005DocumentSummaryInformation" ```
 
-这两个 stream 都以 PropertySetStream 结构(见 [MS-OSHARED]() 的 section3.2.1 )开头。
+这两个 stream 都以 PropertySetStream 结构(见 [MS-OSHARED] 的 section3.2.1 )开头。
 
 OLE文件中包含的常见内容主要有：
 #### 1. linked or embedded object 
@@ -197,7 +197,7 @@ OLE文件中包含的常见内容主要有：
   - *TODO*
 
 #### 4. encryption and obfuscation
-详见 [Office 格式简析 - Crypto](./ole_office_msoffcrypto.md)
+详见 [Office 格式简析 - Crypto](./office_ms_crypto.md)
 
 这里需要注意的是 vba project 的保护(待确认)：
 - vba project
@@ -238,7 +238,7 @@ ole 中 VBA 存储(storage)结构如下：
             + 指定 特定实现和版本相关 的性能缓存的流。必须是读取时忽略。写入时不得出现。
 - PROJECT Stream
     + MUST
-    + VBA Project Properties, 如 工程的目录结构、脚本类型、module的可编辑窗口的信息等等, 以及一些 VBA project 的附加信息，如：ProjectPassword、ProjectVisibilityState 等 ![sample_vba_project](./rsc/sample_vba_project.png) 注：[[MS-OVBA] - v20200219 的 2.3.1.3 ProjectModule]() 有脚本类型的相关说明
+    + VBA Project Properties, 如 工程的目录结构、脚本类型、module的可编辑窗口的信息等等, 以及一些 VBA project 的附加信息，如：ProjectPassword、ProjectVisibilityState 等 ![sample_vba_project](./rsc/sample_vba_project.png) 注：[[MS-OVBA] - v20200219 的 2.3.1.3 ProjectModule] 有脚本类型的相关说明
 - PROJECTwm Stream
     + Optional
     + 包含了用于 module name 在 multibyte character set (MBCS) 和 UTF-16 之间互相映射的信息
@@ -370,7 +370,7 @@ Array(array formula record)
 4. ObjectPool storage
    + Object Pool storage 包含一些用于持久化 embedded OLE objects 的 storages。如果文档没有 embedded OLE objects 时，是不会出现此 storage 的。
    + 每一个位于 ObjectPool storage 中的 storage 都有一个 ObjInfo Stream (名为 "\003ObjInfo")，这个流里存放着用于描述 embedded OLE object 信息的 ODT structure。
-     - embedded OLE object 相关的其他流的描述可以参考 [Embedded Object Native Data]() 相关内容
+     - embedded OLE object 相关的其他流的描述可以参考 **[Embedded Object Native Data]** 相关内容
    + 每个 sub-storage 都存储了一个用户嵌入(embedded)的文件。并且，每个 sub-storage 都是以: 下划线"_" + 10个digits 组成，如 _1557814583
      - 关联引用的关键词：sprmCFOle2、sprmCPicLocation
 5. Summary Information
@@ -397,7 +397,7 @@ Slides 可以包含连接到外部的 objects。播放 ppt 的人可以在幻灯
 
 也就是说 Embedded or Linked Object 在 ppt 中的存在形式就是 External Objects。
 
-有关有 External Objects 的记录，请参阅 [[MS-PPT] External Object Types (section 2.10)]() 相关内容。简单的说，为了解析出 External Objects，我们需要关注：
+有关有 External Objects 的记录，请参阅 **[MS-PPT] External Object Types (section 2.10)** 相关内容。简单的说，为了解析出 External Objects，我们需要关注：
 - ExternalOleObjectStg 0x1011 , 用于对象存储(如果有n个则会有n个此类型的 record) 
 - DocumentContainer 0x03E8 , 用于描述文档对象
   + DocInfoListContainer 0x07D0 
@@ -425,9 +425,9 @@ Slides 可以包含连接到外部的 objects。播放 ppt 的人可以在幻灯
     DocumentContainer Record
 ```
 
-关于鉴别 embedded OLE object 对象的具体步骤可以参考 [[MS-PPT] 2.1.2 PowerPoint Document Stream  part 9]() 相关内容
-
-关于鉴别 linked OLE object 对象的具体步骤可以参考 [[MS-PPT] 2.1.2 PowerPoint Document Stream  part 10]() 相关内容
+关于鉴别 embedded OLE object 对象的具体步骤可以参考 **[MS-PPT] 2.1.2 PowerPoint Document Stream  part 9** 相关内容
+ 
+ 关于鉴别 linked OLE object 对象的具体步骤可以参考 **[MS-PPT] 2.1.2 PowerPoint Document Stream  part 10** 相关内容
 
 ### XLS
 一个 xls 文件最多只能一个 Component Object Stream。
@@ -514,8 +514,8 @@ OOXML
 
 ### 2. Cell References & Name
 excel中可以给 函数、cell、sheet、甚至任意一段文本或图形等定义名字(也被称为 bookmark)，并通过名字来引用对应的内容，引用方式参考 
-- [ECMA-376-Fifth-Edition-Part-1 --- 18.17.2.3 Cell References]()
-- [ECMA-376-Fifth-Edition-Part-1 --- 18.17.2.5 Names ]()
+- [ECMA-376-Fifth-Edition-Part-1] --- 18.17.2.3 Cell References
+- [ECMA-376-Fifth-Edition-Part-1] --- 18.17.2.5 Names 
 
 name 的组成形式：
 ```
@@ -547,7 +547,7 @@ operator 有以下几种格式：
 ```
 
 ### 3. Formulas and expressions
-- [ECMA-376-Fifth-Edition-Part-1 --- 17.16.3 Formulas and expressions]()
+- [ECMA-376-Fifth-Edition-Part-1] --- 17.16.3 Formulas and expressions
 
 A field instruction can involve a calculation via a formula, which is simply an expression that is an arbitrary complex arithmetic expression，如：
 ```
@@ -618,7 +618,7 @@ MSO文件是将Microsoft Office文档保存为网页时创建的宏引用文件�
 - [Microsoft Office Excel 97 - 2007 Binary File Format (.xls) Specification](http://download.microsoft.com/download/5/0/1/501ED102-E53F-4CE0-AA6B-B0F93629DDC6/Office/Excel97-2007BinaryFileFormat(xls)Specification.pdf)
 - [OLE1.0 and OLE2.0 Formats](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-oleds/fdc5e702-d09e-4344-a77f-eb079d41f23f)
 
-- [Microsoft Office Word 2003]()
+- [Microsoft Office Word 2003]
   + [Microsoft Office Word 2003 Preview](https://docs.microsoft.com/en-us/previous-versions/office/aa203677(v=office.11)?redirectedfrom=MSDN)
   + [The XML Files: XML in Microsoft Office Word 2003](https://docs.microsoft.com/en-us/archive/msdn-magazine/2003/november/the-xml-files-xml-in-microsoft-office-word-2003)
 

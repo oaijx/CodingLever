@@ -10,6 +10,7 @@ export default withMermaid(defineConfig({
   description: "编程即直觉，思考即杠杆",
   base: "/",
   cleanUrls: true,
+  // ignoreDeadLinks: true,
   sitemap: {
     hostname
   },

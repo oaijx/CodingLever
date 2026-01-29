@@ -35,7 +35,7 @@ android {
 可以使用 [StringFog](https://github.com/MegatronKing/StringFog.git) 来实现，编译时对代码中的字符串加密。
 
 ## 资源(assets)文件加密
-可以通过 gradle 脚本来实现，如：[asset_crypt.gradle](./rsc/asset_crypt.gradle)。只需要在项目的 build.gradle 中引入即可：```apply from: 'asset_crypt.gradle'```
+可以通过 gradle 脚本来实现，如：[asset_crypt.gradle](./rsc/asset_crypt.gradle.md)。只需要在项目的 build.gradle 中引入即可：```apply from: 'asset_crypt.gradle'```
 
 它可以实现编译器对 flutter 的资源进行加密，只需要添加 flutter 的 asset 路径即可。
 

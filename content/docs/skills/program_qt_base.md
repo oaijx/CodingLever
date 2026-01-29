@@ -49,7 +49,7 @@ keywords: Qt 框架, C++, 信号槽, GUI 开发, 跨平台
 Qt 不仅仅是一个图形用户界面开发包，现在它已经逐渐成长为了一个成熟、优秀的应用程序开发框架。
 
 一个简单的 Qt 程序：
-```
+```cpp
 #include <QApplication>
 #include <QLabel>
 
@@ -63,12 +63,12 @@ int main(int argc, char* argv[])
 ```
 
 ### 文件
-文件 | 用途
---- | --- 
-.ui | Qt Designer 文件
-.qss | 样式表文件
-.qrc | 资源列表文件
-.pro | 平台无关的工程文件<br>此文件列举了工程中包含的源文件，qmake 可以使用它来生成 makefile 文件
+| 文件 | 用途 |
+| --- | --- |
+| .ui | Qt Designer 文件 |
+| .qss | 样式表文件 |
+| .qrc | 资源列表文件 |
+| .pro | 平台无关的工程文件<br />此文件列举了工程中包含的源文件，qmake 可以使用它来生成 makefile 文件 |
 
 ### 编译
 常见的 Qt 编译方法有以下三种：
@@ -81,11 +81,11 @@ qmake 工具是与 Qt 一起提供的，使用 ```.pro``` 文件来描述一个�
 
 qmake 包含了调用 Qt 内置代码生成工具(moc、uic 和 rcc)的必要的逻辑规则。
 
-Qt 内置代码生成工具 | 原名 | 作用
---- | --- | --- 
-moc | Qt Meta-Object Compiler | 元对象编译器
-rcc | Qt Resource Compiler | 用于在构建过程中将(```.qrc```中包含的)资源嵌入到 Qt 应用程序中
-uic | Qt User Interface Compiler | 用于对 ```.ui``` 文件生成 ```.h``` 文件
+| Qt 内置代码生成工具 | 原名 | 作用 |
+| --- | --- | --- |
+| moc | Qt Meta-Object Compiler | 元对象编译器 |
+| rcc | Qt Resource Compiler | 用于在构建过程中将(```.qrc```中包含的)资源嵌入到 Qt 应用程序中 |
+| uic | Qt User Interface Compiler | 用于对 ```.ui``` 文件生成 ```.h``` 文件 |
 
 ##### moc
 Qt 程序在交由标准编译器编译之前，先要使用 moc 分析 C++ 源文件。如果它发现在一个头文件中包含了宏 Q_OBJECT，则会生成一个以原文件名前面加上 moc_ 命名的 C++ 源文件，并与原文件一起参与后续的编译流程。
@@ -105,14 +105,14 @@ uic 读取 Qt Designer 生成的 XML 格式用户界面定义 (.ui) 文件并创
 CMake 是一个开源的跨平台 makefile 生成器，使用 ```CMakeLists.txt``` 文件来描述一个工程的相关依赖、源文件以及配置等等。
 
 为了使 CMake 增加对 Qt 的支持，也就是，调用 Qt 内置的代码生成工具，需要对相关代码执行以下命令：
-命令 | 作用
---- | ---
-qt5_wrap_cpp() | 对给定文件执行 moc
-qt5_wrap_ui() | 对给定文件执行 uic<br>注意，此处生成的 .h 文件，需要再次被 qt5_wrap_cpp() 处理
-qt5_add_resources() | 对给定文件执行 rcc
+| 命令 | 作用 |
+| --- | --- |
+| qt5_wrap_cpp() | 对给定文件执行 moc |
+| qt5_wrap_ui() | 对给定文件执行 uic<br />注意，此处生成的 .h 文件，需要再次被 qt5_wrap_cpp() 处理 |
+| qt5_add_resources() | 对给定文件执行 rcc |
 
 举个栗子：
-```
+```cmake
 project(ss)
 cmake_mininum_required(VERSION 3.6.0)
 find_package(Qt5 REQUIRED)
@@ -187,16 +187,16 @@ Qt 实现了类似于 MVC 的项视图类。
 
 
 #### 其他类
-Qt 类 | 函数 | 说明
---- | --- | ---
-QApplication | beep() | 触发系统提示音
-QApplication | clipboard() | 剪切板
-QApplication | restoreOverrideCursor()<br>setOverrideCursor(Qt::WaitCursor) | 
-QSplashScreen | | 启动画面<br>通常会将相关代码放在 mian() 函数中，位于 Application::exec() 调用之前
-QWidget | repaint() | 强制产生一个即时的重绘事件<br>如果窗口部件在屏幕上是不可见的，则什么都不做
-QWidget | update() | 只是通知 Qt 下一次处理事件时才简单的调用一个绘制事件<br>如果多次调用 update(), Qt 会把连续多次的绘制事件压缩成一个单一的绘制事件，这样可以避免闪烁现象<br>如果窗口部件在屏幕上是不可见的，则什么都不做
-QDialog | show()<br>exec() | 非模态<br>模态
-QTableWidget | setItemPrototype() | 可以在构造函数中使用此函数用新数据类替换 QTableWidgetItem<br>QTableWidgetItem 不是一个窗口部件类，而是一个纯粹的数据类
+| Qt 类 | 函数 | 说明 |
+| --- | --- | --- |
+| QApplication | beep() | 触发系统提示音 |
+| QApplication | clipboard() | 剪切板 |
+| QApplication | restoreOverrideCursor()<br />setOverrideCursor(Qt::WaitCursor) | |
+| QSplashScreen | | 启动画面<br />通常会将相关代码放在 mian() 函数中，位于 Application::exec() 调用之前 |
+| QWidget | repaint() | 强制产生一个即时的重绘事件<br />如果窗口部件在屏幕上是不可见的，则什么都不做 |
+| QWidget | update() | 只是通知 Qt 下一次处理事件时才简单的调用一个绘制事件<br />如果多次调用 update(), Qt 会把连续多次的绘制事件压缩成一个单一的绘制事件，这样可以避免闪烁现象<br />如果窗口部件在屏幕上是不可见的，则什么都不做 |
+| QDialog | show()<br />exec() | 非模态<br />模态 |
+| QTableWidget | setItemPrototype() | 可以在构造函数中使用此函数用新数据类替换 QTableWidgetItem<br />QTableWidgetItem 不是一个窗口部件类，而是一个纯粹的数据类 |
 QFile | | 数据处理
 QDataStream | | 数据处理
 Qt 容器类 | | 都是隐含共享(implicit sharing)的, 这是一个能够把整个容器作为不需要太多运行成本的值来传递的最优化过程
@@ -267,13 +267,13 @@ Qt 为它所有的内置窗口部件都提供了合理的默认大小策略值�
 默认的 QSizePolicy 表示 widget 的大小可以自由变化，一般倾向于采用 sizeHint() 返回的大小，这对大多数的 widget 来说已经足够好了。(提示：顶层widget的大小一般约束为桌面大小长度和宽度的的2/3，但也可以通过 resize() 函数来进行调整)
 
 QSizePolicy 具有水平方向和垂直方向两个分量，以下是一些常见的取值：
-QSizePolicy | 作用 | 说明
---- | --- | ---
-Fixed | widget 不能被拉伸或压缩 | 大小尺寸总是保持为 sizeHint() 的尺寸
-Minimum | sizeHint() 是 widget 的最小尺寸 | 尺寸不能比大小提示更小<br>但如有必要，可以拉伸它来填充尽可能多的空间
-Maximum | sizeHint() 是 widget 的最大尺寸 | 尺寸不能比大小提示更大<br>但可以把它压缩到它的最小大小提示的尺寸
-Preferred | sizeHint() 是 widget 的合适尺寸 | 如有需要，可以对此控件进行拉伸或压缩
-Expanding | widget 可以被拉伸或压缩 | 此控件特别希望能够被拉伸(变长变高)
+| QSizePolicy | 作用 | 说明 |
+| --- | --- | --- |
+| Fixed | widget 不能被拉伸或压缩 | 大小尺寸总是保持为 sizeHint() 的尺寸 |
+| Minimum | sizeHint() 是 widget 的最小尺寸 | 尺寸不能比大小提示更小<br />但如有必要，可以拉伸它来填充尽可能多的空间 |
+| Maximum | sizeHint() 是 widget 的最大尺寸 | 尺寸不能比大小提示更大<br />但可以把它压缩到它的最小大小提示的尺寸 |
+| Preferred | sizeHint() 是 widget 的合适尺寸 | 如有需要，可以对此控件进行拉伸或压缩 |
+| Expanding | widget 可以被拉伸或压缩 | 此控件特别希望能够被拉伸(变长变高) |
 
 思考：Preferred 和 Expanding 都可以被拉伸或压缩，那么他们有什么不同之处？
 - 优先级问题。在重新改变一个既包含 Preferred 窗口部件 又包含 Expanding 窗口部件的窗体大小时，多出来的空间，会优先分配给 Expanding 窗口部件，而 Preferred 窗口部件仍然会按照原有大小提示而保持不变
@@ -281,11 +281,11 @@ Expanding | widget 可以被拉伸或压缩 | 此控件特别希望能够被拉�
 #### 影响布局方式: Size
 | 类别 | 函数名 | 效果 | 作用 | 注意事项 |
 | --- | --- | --- | --- | --- |
-| | ```setMinimumSize(w,h)```<br>```setMaximumSize(w,h)``` | | | 优先级最高
-| | ```setFixedSize(x, y, w, h)``` | 其实就是同时：```setMinimumSize(w,h); setMaximumSize(w,h);``` | |setFixedSize 后再调整窗口大小无效，不过，可以如下设置使其生效：<br>```setMinimumSize(0,0); setMaximumSize(QSize(QWIDGETSIZE_MAX,QWIDGETSIZE_MAX)``` 
-| | ```resize(x, y, w, h)``` | 调整的大小受 minimumSize() 和 maximumSize() 约束 | | 在*窗口* resize 时如果 w 或者 h 的值小于窗口内某个控件的 w或h，那么 resize 就在这个方向上无效，此时Qt会自动生成一个合适的值
-| | ```setGeometry(x, y, w, h)``` | 其实就是 ```resize```和 ```move``` 的组合<br><br>调整的大小受 minimumSize() 和 maximumSize() 约束 | 控制 widget 相对于其父窗口的几何结构(不包括窗口边框，注意和frameGeometry区别) | 1.setGeometry 时，如果控件可见(visible), 会即时接收到 moveEvent() 和 resizeEvent()。如果控件当前不可见, 会保证在控件被显示前接收到相关事件。<br>2. Warning: Calling setGeometry() inside resizeEvent() or moveEvent() can lead to infinite recursion.
-| | ```adjustSize()``` | | Adjusts the size of the widget to fit its contents | 当 sizeHint() 有效(如，size hint 的 w 和 h 都 >= 0)时，会采用它的值；不然的话，会设置它的size 为覆盖所有子控件的矩形区域
+| | ```setMinimumSize(w,h)```<br />```setMaximumSize(w,h)``` | | | 优先级最高 |
+| | ```setFixedSize(x, y, w, h)``` | 其实就是同时：```setMinimumSize(w,h); setMaximumSize(w,h);``` | | setFixedSize 后再调整窗口大小无效，不过，可以如下设置使其生效：<br />```setMinimumSize(0,0); setMaximumSize(QSize(QWIDGETSIZE_MAX,QWIDGETSIZE_MAX))``` |
+| | ```resize(x, y, w, h)``` | 调整的大小受 minimumSize() 和 maximumSize() 约束 | | 在*窗口* resize 时如果 w 或者 h 的值小于窗口内某个控件的 w 或 h，那么 resize 就在这个方向上无效，此时 Qt 会自动生成一个合适的值 |
+| | ```setGeometry(x, y, w, h)``` | 其实就是 ```resize```和 ```move``` 的组合<br /><br />调整的大小受 minimumSize() 和 maximumSize() 约束 | 控制 widget 相对于其父窗口的几何结构(不包括窗口边框，注意和frameGeometry区别) | 1.setGeometry 时，如果控件可见(visible), 会即时接收到 moveEvent() 和 resizeEvent()。如果控件当前不可见, 会保证在控件被显示前接收到相关事件。<br />2. Warning: Calling setGeometry() inside resizeEvent() or moveEvent() can lead to infinite recursion. |
+| | ```adjustSize()``` | | Adjusts the size of the widget to fit its contents | 当 sizeHint() 有效(如，size hint 的 w 和 h 都 >= 0)时，会采用它的值；不然的话，会设置它的size 为覆盖所有子控件的矩形区域 |
 | | ```pos()``` | widget相对于其父widget的位置 | 
 | | ```rect()``` | widget除去窗口边框的内在几何矩形 | 
 | | ```size()``` | widget除去边框之外的大小 | 
@@ -330,53 +330,53 @@ QApplication::setStyleSheet() 为整个应用程序设置一个样式表；QWdig
 注意，如果 子控件 从 父控件继承 样式时，父控件如果通过 QWdiget::setStyleSheet() 设置了 透明度等属性，则子控件的 透明度等会继承父控件的属性值，同时，子控件的显示效果会因为子控件和父控件的属性产生叠加而与预期有异。
 
 ### 样式表选择器
-选择器 | 实例 | 可以匹配的窗口部件
---- | --- | ---
-全局对象 | ```*``` | 任意窗口部件
-类型 | ```QDial``` | 给定类的实例，**包括子类**
-类 | ```.QDial``` | 给定类的实例，**不包括子类**
-标识 | ```QDial#ageDial``` | 给定**对象名称**的窗口部件
-Qt 属性 | ```QDial[ y="0"``` ] | 为某些**属性**赋值的窗口部件
-子对象 | ```QFrame > QDial``` | 给定窗口部件的**直接子窗口**部件
-子孙对象 | ```QFrame QDial``` | 给定窗口部件的**子窗口**部件
+| 选择器 | 实例 | 可以匹配的窗口部件 |
+| --- | --- | --- |
+| 全局对象 | ```*``` | 任意窗口部件 |
+| 类型 | ```QDial``` | 给定类的实例，**包括子类** |
+| 类 | ```.QDial``` | 给定类的实例，**不包括子类** |
+| 标识 | ```QDial#ageDial``` | 给定**对象名称**的窗口部件 |
+| Qt 属性 | ```QDial[ y="0" ]``` | 为某些**属性**赋值的窗口部件 |
+| 子对象 | ```QFrame > QDial``` | 给定窗口部件的**直接子窗口**部件 |
+| 子孙对象 | ```QFrame QDial``` | 给定窗口部件的**子窗口**部件 |
 
 选择器能以各种方式组合使用。
 
 此外，从 Qt4.2 开始，可以通过 QObject::setProperty() 动态的设置一个不存在的属性。要注意的是，在使用属性选择器时，如果之前控件有其它样式，那么需要调用 ```unpolish() 和 polish()``` 函数来抹去旧样式并换上新样式:
-```
+```cpp
   this->setProperty("status", 0);
   this->style()->unpolish(this);
   this->style()->polish(this);
 ```
 
 ### 常见的自定义辅助控制器
-辅助控制器 | 说明
---- | ---
-::indicator | 复选框、单选钮、可选菜单项或可选组群框的指示器
-::menu-indicator | 按钮的菜单指示器
-::item | 菜单、菜单栏或状态栏项
-::up-button | 微调框、滚动条的向上按钮
-::down-button | 微调框、滚动条的向下按钮
-::up-arrow | 微调框、滚动条或标题视图的向上箭头
-::down-arrow | 微调框、滚动条、标题视图或组合框的向下箭头 
-::drop-down | 组合框的下拉箭头
-::title | 组群框的标题 
+| 辅助控制器 | 说明 |
+| --- | --- |
+| ::indicator | 复选框、单选钮、可选菜单项或可选组群框的指示器 |
+| ::menu-indicator | 按钮的菜单指示器 |
+| ::item | 菜单、菜单栏或状态栏项 |
+| ::up-button | 微调框、滚动条的向上按钮 |
+| ::down-button | 微调框、滚动条的向下按钮 |
+| ::up-arrow | 微调框、滚动条或标题视图的向上箭头 |
+| ::down-arrow | 微调框、滚动条、标题视图或组合框的向下箭头 |
+| ::drop-down | 组合框的下拉箭头 |
+| ::title | 组群框的标题 | 
 
 ### 常见的控件中可以访问样式表的状态
-状态 | 说明
---- | ---
-:disabled | 禁用窗口部件
-:enabled | 启用窗口部件
-:focus | 窗口部件有输入焦点
-:hover | 鼠标在窗口部件上悬停
-:pressed | 鼠标按键单击窗口部件
-:checked | 按钮已被选中
-:unchecked | 按钮未被选中
-:indeterminate | 按钮被部分选中
-:open | 窗口部件位于打开或扩展状态
-:close | 窗口部件位于关闭或销毁状态
-:on | 窗口部件的状态是"on"
-:off | 窗口部件的状态是"off"
+| 状态 | 说明 |
+| --- | --- |
+| :disabled | 禁用窗口部件 |
+| :enabled | 启用窗口部件 |
+| :focus | 窗口部件有输入焦点 |
+| :hover | 鼠标在窗口部件上悬停 |
+| :pressed | 鼠标按键单击窗口部件 |
+| :checked | 按钮已被选中 |
+| :unchecked | 按钮未被选中 |
+| :indeterminate | 按钮被部分选中 |
+| :open | 窗口部件位于打开或扩展状态 |
+| :close | 窗口部件位于关闭或销毁状态 |
+| :on | 窗口部件的状态是"on" |
+| :off | 窗口部件的状态是"off" |
 
 
 ## 五、事件(event)
@@ -428,7 +428,7 @@ Qt 提供了5个级别的事件处理和事件过滤方法：
 
 这里给出一个插件示例：
 1. 插件类
-```
+```cpp
 #include <QDesignerCustomWidgetInterface>
 
 class IconEditorPlugin : public QObject, public QDesignerCustomWidgetInterface
@@ -461,7 +461,7 @@ Qt 的插件需要包含：一个 .pro 文件；一个 .h 和 .cpp 文件，由�
 
 这里给出简单示例：
 1. 插件的 .h 和 .cpp 文件，样式如下：
-``` 
+```cpp
 /* .h */
 
 class XxxPlugin : public QObject, public XxxPluginInterface
@@ -472,7 +472,7 @@ public:
   ...
 };
 ```
-``` 
+```cpp
 /* .cpp */
 
 ...
@@ -496,23 +496,23 @@ DESTDIR    = $$[QT_INSTALL_PLUGINS]/xxx   # 指定插件存放目录
 在应用程序中，必须对它们打算使用的 Qt 插件进行配置。Qt 插件必须放在特殊的子目录中(如，plugins/styles 是用于自定义风格的子目录)。Qt 应用程序在可执行文件所在目录的 plugins 目录中查找插件。如果希望把 Qt 插件配置到与此不同的目录中，那么就需要在一开始就调用 QCoreApplication::addLibraryPath() 来扩展插件的搜索路径，或者也可以在启动程序之前设置 QT_PLUGIN_PATH 环境变量。
 
 #### 插件类: 预定义
-插件类 | 处理器类 | 备注
---- | --- | ---
-QAccessibleBridgePlugin | QAccessibleBridge | 
-QAccessiblePlugin | QAccessible | 
-QFontEnginePlugin | QAbstractFontEngine | 
-QIconEnginePluginV2 | QIconEngineV2 | 
-QImageIOPlugin | QImageIOHandler | 
-QInputContextPlugin | QInputContext | 
-QPictureFormatPlugin | N/A
-QScriptExtensionPlugin | N/A
-QSqlDriverPlugin | QSqlDriver | 
-QStylePlugin | QStyle | 
-QTextCodecPlugin | QTextCodec | 
-QDecorationPlugin | QDecoration | 仅在 linux 下的 Qt/Embedded 中可用
-QScreenDriverPlugin | QScreen | 仅在 linux 下的 Qt/Embedded 中可用
-QKbdDriverPlugin | QWSKeyboardHandler | 仅在 linux 下的 Qt/Embedded 中可用
-QMouseDriverPlugin | QWSMouseHanlder | 仅在 linux 下的 Qt/Embedded 中可用
+| 插件类 | 处理器类 | 备注 |
+| --- | --- | --- |
+| QAccessibleBridgePlugin | QAccessibleBridge | |
+| QAccessiblePlugin | QAccessible | |
+| QFontEnginePlugin | QAbstractFontEngine | |
+| QIconEnginePluginV2 | QIconEngineV2 | |
+| QImageIOPlugin | QImageIOHandler | |
+| QInputContextPlugin | QInputContext | |
+| QPictureFormatPlugin | N/A | |
+| QScriptExtensionPlugin | N/A | |
+| QSqlDriverPlugin | QSqlDriver | |
+| QStylePlugin | QStyle | |
+| QTextCodecPlugin | QTextCodec | |
+| QDecorationPlugin | QDecoration | 仅在 linux 下的 Qt/Embedded 中可用 |
+| QScreenDriverPlugin | QScreen | 仅在 linux 下的 Qt/Embedded 中可用 |
+| QKbdDriverPlugin | QWSKeyboardHandler | 仅在 linux 下的 Qt/Embedded 中可用 |
+| QMouseDriverPlugin | QWSMouseHanlder | 仅在 linux 下的 Qt/Embedded 中可用 |
 
 预定义的插件类，可以很容易被 Qt 的现有机制调用，如，``` QApplication::setStyle("Bronze");``` 就可以很容加载一个自定义 style 插件中提供的一个名为 Bronze 的 style。
 
@@ -520,7 +520,7 @@ QMouseDriverPlugin | QWSMouseHanlder | 仅在 linux 下的 Qt/Embedded 中可用
 一个应用程序的插件就是实现了一个或多个接口的动态库。接口就是有专有的纯虚函数组成的类。
 
 1. 先定义一个接口：
-```
+```cpp
 class TextArtInterface 
 {
 public:
@@ -538,21 +538,21 @@ c. 接口名
 d. 版本号。只要这个接口发生改变，就必须要增加版本号，否则，应用程序可能会因为试图访问一个过期的插件而崩溃。
 
 2. 定义插件并实现：
-```
+```cpp
 class BasicEffectsPlugin : public QObject, public TextArtInterface
 {
   Q_OBJECT
   Q_INTERFACES(TextArtInterface)
 public:
   ...
-}
+};
 ```
 一个应用程序的插件就是 QObject 和 它想要提供的接口的一个子类。
 
-上述插件实现了一个接口，此外，除了 ```Q_OBJECT``` 外，还必须为继承的每个接口使用 ```Q_INTERFACES()``` 宏，以确保 moc 和 qobject_cast<T>() 可以一起正常工作。
+上述插件实现了一个接口，此外，除了 ```Q_OBJECT``` 外，还必须为继承的每个接口使用 ```Q_INTERFACES()``` 宏，以确保 moc 和 ```qobject_cast&lt;T&gt;()``` 可以一起正常工作。
 
 3. 加载插件：
-```
+```cpp
 void TextArtDialog::loadPlugins()
 {
    QDir pluginDir = directoryOf("plugins");
