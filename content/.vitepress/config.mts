@@ -3,12 +3,15 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 const hostname = 'https://vibelever.com'
 
+// 如果是 GitHub Actions 环境 (workflow/deploy)，使用仓库子路径 '/CodingLever/'
+const baseConfig = process.env.GITHUB_ACTIONS === 'true' ? '/CodingLever/' : '/'
+
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
   lang: 'zh-CN',
   title: "Coding Lever",
   description: "编程即直觉，思考即杠杆",
-  base: "/",
+  base: baseConfig,
   cleanUrls: true,
   // ignoreDeadLinks: true,
   sitemap: {
